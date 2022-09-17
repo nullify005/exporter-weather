@@ -1,0 +1,23 @@
+helmDefaults:
+  wait: true
+  atomic: true
+  verify: false # necessary as this is a local chart
+
+environments:
+  local: {}
+  development: {}
+
+templates:
+  app: &app
+    name: app
+    namespace: exporter-weather-{{ .Environment.Name }}-v1
+    createNamespace: true
+    chart: ../helm/charts/exporter-weather
+    values:
+    - ../helm/values/app/common.yaml
+    - ../helm/values/app/{{ .Environment.Name }}.yaml    
+
+releases:
+- <<: *app
+
+

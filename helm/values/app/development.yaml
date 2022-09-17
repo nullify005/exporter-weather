@@ -1,0 +1,7 @@
+image:
+  tag: development
+args:
+- -location
+- Mittagong
+- -interval
+- 120

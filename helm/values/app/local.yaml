@@ -1,0 +1,6 @@
+image:
+  repository: exporter-weather
+  tag: latest
+args:
+- -location
+- Mittagong

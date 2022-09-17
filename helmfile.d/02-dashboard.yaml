@@ -1,0 +1,13 @@
+helmDefaults:
+  wait: true
+  atomic: true
+  verify: false # necessary as this is a local chart
+
+environments:
+  local: {}
+
+releases:
+  - name: dashboard
+    namespace: exporter-weather-{{ .Environment.Name }}-v1
+    createNamespace: true
+    chart: ../helm/charts/grafana-dashboard
