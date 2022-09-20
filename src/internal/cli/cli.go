@@ -10,15 +10,18 @@ import (
 
 	"github.com/nullify005/exporter-weather/internal/bom/location"
 	"github.com/nullify005/exporter-weather/internal/bom/observation"
+	wind "github.com/nullify005/exporter-weather/internal/data"
+	"github.com/nullify005/exporter-weather/internal/render"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-var flagLocation = flag.String("location", "", "The observation Location, ie: Sydney")
+var flagLocation = flag.String("location", "", "The geohash for the observation location (use lookup to find it)")
 var flagInterval = flag.Int("interval", 30, "The observation Interval in Seconds")
 var flagListenPort = flag.Int("port", 2112, "The HTTP port to listen on for metrics & health")
 var flagHelp = flag.Bool("help", false, "Command line arguments")
+var flagLookup = flag.String("lookup", "", "Lookup the geohash for a given location")
 
 var (
 	metricTemp = promauto.NewGauge(prometheus.GaugeOpts{
@@ -49,10 +52,15 @@ var (
 		Name: "observation_error",
 		Help: "Error flag indicating an observation error.",
 	})
+	metricBearing = promauto.NewGauge(prometheus.GaugeOpts{
+		Name: "observation_wind_bearing",
+		Help: "Current wind direction.",
+	})
 )
 
 func observe(name string) {
 	go func() {
+		w := wind.Init()
 		log.Print("setting up observation loop")
 		for {
 			time.Sleep(time.Duration(*flagInterval) * time.Second)
@@ -70,6 +78,8 @@ func observe(name string) {
 			metricHumidity.Set(float64(res.Humidity))
 			metricRainSince9Am.Set(res.RainSince9Am)
 			metricErrorState.Set(0)
+			metricBearing.Set(observation.Bearing(res.Wind.Direction))
+			w.Observe(time.Now(), float64(res.Wind.SpeedKilometre), float64(res.Gust.SpeedKilometre))
 		}
 	}()
 }
@@ -82,6 +92,15 @@ func Main() {
 	log.SetPrefix("exporter-weather: ")
 	log.SetFlags(log.LstdFlags)
 	flag.Parse()
+	if *flagLookup != "" {
+		geo, err := location.Search(*flagLookup)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+		fmt.Printf("location: %s has geohash: %s", *flagLookup, geo)
+		os.Exit(0)
+	}
 	if *flagHelp || *flagLocation == "" {
 		flag.PrintDefaults()
 		os.Exit(1)
@@ -91,14 +110,10 @@ func Main() {
 	log.Print("listen port: ", *flagListenPort)
 	listenPort := fmt.Sprintf(":%d", *flagListenPort)
 
-	geo, err := location.Search(*flagLocation)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Printf("location: %s has geohash: %s", *flagLocation, geo)
-	observe(geo)
+	observe(*flagLocation)
 
 	http.Handle("/metrics", promhttp.Handler())
 	http.HandleFunc("/health", healthHandler)
+	http.HandleFunc("/", render.WindSpeed)
 	http.ListenAndServe(listenPort, nil)
 }

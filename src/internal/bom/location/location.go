@@ -47,9 +47,11 @@ func Search(name string) (string, error) {
 	if len(response.Data) > 1 {
 		names := ""
 		for _, v := range response.Data {
-			names += v.Name + " "
+			s := fmt.Sprintf("   - %s (%s) [%s]\n", v.Name, v.State, v.Geohash)
+			names += s
 		}
-		return "", fmt.Errorf("found multiple Locations: %s try narrowing the search", names)
+		names = names[:len(names)-1] // strip the last char
+		return "", fmt.Errorf("found multiple locations:\n%s\ntry narrowing the search", names)
 	}
 	return response.Data[0].Geohash, nil
 }
