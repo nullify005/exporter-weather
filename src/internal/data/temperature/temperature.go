@@ -1,4 +1,4 @@
-package wind
+package temperature
 
 import (
 	"sync"
@@ -13,9 +13,9 @@ type observations struct {
 }
 
 type observation struct {
-	timestamp time.Time
-	windSpeed float64
-	windGust  float64
+	timestamp   time.Time
+	temperature float64
+	feelslike   float64
 }
 
 func Init() *observations {
@@ -35,22 +35,22 @@ func (*observations) Timestamps() []time.Time {
 	return r
 }
 
-func (*observations) WindSpeed() []float64 {
+func (*observations) Temperature() []float64 {
 	var r []float64
 	for _, v := range o.observation {
-		r = append(r, v.windSpeed)
+		r = append(r, v.temperature)
 	}
 	return r
 }
 
-func (*observations) WindGust() []float64 {
+func (*observations) FeelsLike() []float64 {
 	var r []float64
 	for _, v := range o.observation {
-		r = append(r, v.windGust)
+		r = append(r, v.feelslike)
 	}
 	return r
 }
 
-func (*observations) Observe(t time.Time, speed float64, gust float64) {
-	o.observation = append(o.observation, observation{timestamp: t, windSpeed: speed, windGust: gust})
+func (*observations) Observe(t time.Time, temp float64, feels float64) {
+	o.observation = append(o.observation, observation{timestamp: t, temperature: temp, feelslike: feels})
 }

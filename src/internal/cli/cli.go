@@ -10,7 +10,8 @@ import (
 
 	"github.com/nullify005/exporter-weather/internal/bom/location"
 	"github.com/nullify005/exporter-weather/internal/bom/observation"
-	wind "github.com/nullify005/exporter-weather/internal/data"
+	"github.com/nullify005/exporter-weather/internal/data/temperature"
+	"github.com/nullify005/exporter-weather/internal/data/wind"
 	"github.com/nullify005/exporter-weather/internal/render"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
@@ -61,6 +62,7 @@ var (
 func observe(name string) {
 	go func() {
 		w := wind.Init()
+		t := temperature.Init()
 		log.Print("setting up observation loop")
 		for {
 			time.Sleep(time.Duration(*flagInterval) * time.Second)
@@ -79,7 +81,9 @@ func observe(name string) {
 			metricRainSince9Am.Set(res.RainSince9Am)
 			metricErrorState.Set(0)
 			metricBearing.Set(observation.Bearing(res.Wind.Direction))
-			w.Observe(time.Now(), float64(res.Wind.SpeedKilometre), float64(res.Gust.SpeedKilometre))
+			ts := time.Now()
+			w.Observe(ts, float64(res.Wind.SpeedKilometre), float64(res.Gust.SpeedKilometre), observation.Bearing(res.Wind.Direction))
+			t.Observe(ts, res.Temp, res.TempFeelsLike)
 		}
 	}()
 }
@@ -114,6 +118,6 @@ func Main() {
 
 	http.Handle("/metrics", promhttp.Handler())
 	http.HandleFunc("/health", healthHandler)
-	http.HandleFunc("/", render.WindSpeed)
+	http.HandleFunc("/", render.Graphs)
 	http.ListenAndServe(listenPort, nil)
 }
