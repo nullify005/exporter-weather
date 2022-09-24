@@ -2,6 +2,12 @@ image:
   tag: development
 args:
 - -location
-- Mittagong
+- r3fup88
 - -interval
 - 120
+ingress:
+  hosts:
+  - host: weather.kube-system.local
+    paths:
+    - path: /
+      pathType: Prefix

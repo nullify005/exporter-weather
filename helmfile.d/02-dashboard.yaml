@@ -5,6 +5,7 @@ helmDefaults:
 
 environments:
   local: {}
+  development: {}
 
 releases:
   - name: dashboard
