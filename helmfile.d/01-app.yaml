@@ -7,17 +7,17 @@ environments:
   local: {}
   development: {}
 
+templates:
+  app: &app
+    name: app
+    namespace: exporter-weather-{{ .Environment.Name }}-v1
+    createNamespace: true
+    chart: ../helm/charts/exporter-weather
+    values:
+    - ../helm/values/app/common.yaml
+    - ../helm/values/app/{{ .Environment.Name }}.yaml    
+
 releases:
-- name: app
-  namespace: exporter-weather-{{ .Environment.Name }}-v1
-  createNamespace: true
-  chart: ../helm/charts/exporter-weather
-  values:
-  - ../helm/values/app/common.yaml
-  - ../helm/values/app/{{ .Environment.Name }}.yaml
-  {{- if contains "development" .Environment.Name }}
-  - image:
-      tag: sha256:d45cafcc3580bcbc42c287ef1685f2352afe4802afd6c33537497280d468d4de
-  {{- end }}
+- <<: *app
 
 

@@ -3,12 +3,4 @@ image:
   tag: latest
 args:
 - -location
-- r3fup88
-- -interval
-- 10
-ingress:
-  hosts:
-  - host: weather.fuf.me
-    paths:
-    - path: /
-      pathType: Prefix
+- Mittagong

@@ -67,7 +67,7 @@ func floatString(i []float64) string {
 }
 
 func Graphs(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("./templates/graph.html")
+	tmpl, err := template.ParseFiles("templates/graph.html")
 	if err != nil {
 		handleError(w, err)
 		return
