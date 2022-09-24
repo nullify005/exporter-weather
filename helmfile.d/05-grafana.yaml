@@ -1,0 +1,21 @@
+repositories:
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
+
+helmDefaults:
+  wait: true
+  verify: false
+  atomic: true
+
+environments:
+  local: {}
+  development: {}
+
+releases:
+  - name: grafana
+    namespace: render-metrics-{{ .Environment.Name }}-v1
+    chart: grafana/grafana
+    createNamespace: true
+    values:
+    - ../helm/values/grafana/common.yaml
+    - ../helm/values/grafana/{{ .Environment.Name }}.yaml

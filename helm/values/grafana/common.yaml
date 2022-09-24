@@ -1,0 +1,14 @@
+ingress:
+  enabled: true
+grafana.ini:
+  server:
+    root_url: "%(protocol)s://%(domain)s"
+sidecar:
+  dashboards:
+    enabled: true
+    searchNamespace: ALL
+resources:
+  requests:
+    memory: 256Mi
+  limits:
+    memory: 256Mi

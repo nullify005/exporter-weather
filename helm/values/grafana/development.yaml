@@ -1,0 +1,13 @@
+ingress:
+  hosts:
+  - grafana.kube-system.local
+grafana.ini:
+  domain: grafana.kube-system.local
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: prometheus
+      type: prometheus
+      url: http://prometheus-server.service-metrics-development-v1:80
+      isDefault: true
