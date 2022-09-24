@@ -1,0 +1,454 @@
+{
+"annotations": {
+    "list": [
+    {
+        "builtIn": 1,
+        "datasource": {
+        "type": "grafana",
+        "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+        "limit": 100,
+        "matchAny": false,
+        "tags": [],
+        "type": "dashboard"
+        },
+        "type": "dashboard"
+    }
+    ]
+},
+"editable": true,
+"fiscalYearStartMonth": 0,
+"graphTooltip": 0,
+"id": 1,
+"links": [],
+"liveNow": false,
+"panels": [
+    {
+    "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+    },
+    "fieldConfig": {
+        "defaults": {
+        "color": {
+            "mode": "continuous-BlYlRd"
+        },
+        "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "hue",
+            "hideFrom": {
+            "legend": false,
+            "tooltip": false,
+            "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+            "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+            "group": "A",
+            "mode": "none"
+            },
+            "thresholdsStyle": {
+            "mode": "off"
+            }
+        },
+        "mappings": [],
+        "max": 100,
+        "min": 0,
+        "thresholds": {
+            "mode": "absolute",
+            "steps": [
+            {
+                "color": "green",
+                "value": null
+            },
+            {
+                "color": "red",
+                "value": 80
+            }
+            ]
+        },
+        "unit": "humidity"
+        },
+        "overrides": []
+    },
+    "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+    },
+    "id": 4,
+    "options": {
+        "legend": {
+        "calcs": [],
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": true
+        },
+        "tooltip": {
+        "mode": "single",
+        "sort": "none"
+        }
+    },
+    "targets": [
+        {
+        "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+        },
+        "editorMode": "code",
+        "expr": "sum(observation_humidity)/count(observation_humidity)",
+        "legendFormat": "Percentage",
+        "range": true,
+        "refId": "A"
+        }
+    ],
+    "title": "Humidity",
+    "type": "timeseries"
+    },
+    {
+    "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+    },
+    "description": "",
+    "fieldConfig": {
+        "defaults": {
+        "color": {
+            "mode": "palette-classic"
+        },
+        "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+            "legend": false,
+            "tooltip": false,
+            "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+            "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+            "group": "A",
+            "mode": "none"
+            },
+            "thresholdsStyle": {
+            "mode": "off"
+            }
+        },
+        "mappings": [],
+        "thresholds": {
+            "mode": "absolute",
+            "steps": [
+            {
+                "color": "green",
+                "value": null
+            },
+            {
+                "color": "red",
+                "value": 80
+            }
+            ]
+        },
+        "unit": "lengthmm"
+        },
+        "overrides": []
+    },
+    "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+    },
+    "id": 6,
+    "options": {
+        "legend": {
+        "calcs": [],
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": true
+        },
+        "tooltip": {
+        "mode": "single",
+        "sort": "none"
+        }
+    },
+    "targets": [
+        {
+        "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+        },
+        "editorMode": "code",
+        "expr": "sum(observation_rain_since_9am_mm)/count(observation_rain_since_9am_mm)",
+        "hide": false,
+        "legendFormat": "mm rain since 9am",
+        "range": true,
+        "refId": "A"
+        }
+    ],
+    "title": "Rainfall",
+    "type": "timeseries"
+    },
+    {
+    "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+    },
+    "fieldConfig": {
+        "defaults": {
+        "color": {
+            "mode": "palette-classic"
+        },
+        "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Degrees Celcius",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "none",
+            "hideFrom": {
+            "legend": false,
+            "tooltip": false,
+            "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+            "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+            "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+            "group": "A",
+            "mode": "none"
+            },
+            "thresholdsStyle": {
+            "mode": "off"
+            }
+        },
+        "mappings": [],
+        "thresholds": {
+            "mode": "absolute",
+            "steps": [
+            {
+                "color": "green",
+                "value": null
+            },
+            {
+                "color": "red",
+                "value": 80
+            }
+            ]
+        },
+        "unit": "celsius"
+        },
+        "overrides": []
+    },
+    "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+    },
+    "id": 2,
+    "options": {
+        "legend": {
+        "calcs": [],
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": true
+        },
+        "tooltip": {
+        "mode": "single",
+        "sort": "none"
+        }
+    },
+    "targets": [
+        {
+        "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+        },
+        "editorMode": "code",
+        "expr": "sum(observation_temperature_celcius)/count(observation_temperature_celcius)",
+        "interval": "",
+        "legendFormat": "Temperature",
+        "range": true,
+        "refId": "Observation Temperature Celcius"
+        },
+        {
+        "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+        },
+        "editorMode": "code",
+        "exemplar": false,
+        "expr": "sum(observation_temperature_feelslike_celcius)/count(observation_temperature_feelslike_celcius)",
+        "hide": false,
+        "instant": false,
+        "legendFormat": "Feels Like",
+        "range": true,
+        "refId": "Observastion Temperature Feels Like Celcius"
+        }
+    ],
+    "title": "Temperature",
+    "type": "timeseries"
+    },
+    {
+    "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+    },
+    "fieldConfig": {
+        "defaults": {
+        "color": {
+            "mode": "palette-classic"
+        },
+        "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "none",
+            "hideFrom": {
+            "legend": false,
+            "tooltip": false,
+            "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+            "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+            "group": "A",
+            "mode": "none"
+            },
+            "thresholdsStyle": {
+            "mode": "off"
+            }
+        },
+        "mappings": [],
+        "thresholds": {
+            "mode": "absolute",
+            "steps": [
+            {
+                "color": "green",
+                "value": null
+            },
+            {
+                "color": "red",
+                "value": 80
+            }
+            ]
+        },
+        "unit": "velocitykmh"
+        },
+        "overrides": []
+    },
+    "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+    },
+    "id": 8,
+    "options": {
+        "legend": {
+        "calcs": [],
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": true
+        },
+        "tooltip": {
+        "mode": "single",
+        "sort": "none"
+        }
+    },
+    "targets": [
+        {
+        "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+        },
+        "editorMode": "code",
+        "expr": "sum(observation_windspeed_kph)/count(observation_windspeed_kph)",
+        "legendFormat": "Windspeed",
+        "range": true,
+        "refId": "A"
+        },
+        {
+        "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+        },
+        "editorMode": "code",
+        "expr": "sum(observation_windspeed_gust_kph)/count(observation_windspeed_gust_kph)",
+        "hide": false,
+        "legendFormat": "Gusts",
+        "range": true,
+        "refId": "B"
+        }
+    ],
+    "title": "Windspeed",
+    "type": "timeseries"
+    }
+],
+"schemaVersion": 37,
+"style": "dark",
+"tags": [],
+"templating": {
+    "list": []
+},
+"time": {
+    "from": "now-1h",
+    "to": "now"
+},
+"timepicker": {},
+"timezone": "",
+"title": "Observations",
+"uid": "Tdccfnn4z",
+"version": 4,
+"weekStart": ""
+}
