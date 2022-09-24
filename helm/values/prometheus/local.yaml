@@ -1,4 +1,0 @@
-server:
-  ingress:
-    hosts:
-    - prometheus.fuf.me
