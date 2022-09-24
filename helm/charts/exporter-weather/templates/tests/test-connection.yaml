@@ -13,5 +13,8 @@ spec:
       image: busybox
       command: ['wget']
       args: ['{{ include "exporter-weather.fullname" . }}:{{ .Values.service.port }}']
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
   restartPolicy: Never
 {{- end }}

@@ -16,4 +16,6 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -a -ldflags="-s -w" -
 FROM scratch
 COPY --from=builder /exporter-weather /exporter-weather
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY src/templates /templates
+EXPOSE 2112/tcp
 CMD ["/exporter-weather"]
