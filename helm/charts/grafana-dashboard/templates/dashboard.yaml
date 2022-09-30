@@ -8,4 +8,4 @@ metadata:
   #   k8s-sidecar-target-directory: "/tmp/dashboards/Weather"
 data:
   observations.json: |-
-{{ .Files.Get "dashboards/observations.json" | indent 4 }}
+{{ .Files.Get "dashboards/weather.json" | indent 4 }}
