@@ -6,9 +6,5 @@ args:
 - r3fup88
 - -interval
 - 10
-ingress:
-  hosts:
-  - host: weather.fuf.me
-    paths:
-    - path: /
-      pathType: Prefix
+- -listen
+- 0.0.0.0:2112

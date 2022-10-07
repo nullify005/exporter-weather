@@ -5,9 +5,5 @@ args:
 - r3fup88
 - -interval
 - 120
-ingress:
-  hosts:
-  - host: weather.kube-system.local
-    paths:
-    - path: /
-      pathType: Prefix
+- -listen
+- 0.0.0.0:2112

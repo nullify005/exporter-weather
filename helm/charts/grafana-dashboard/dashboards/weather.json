@@ -114,7 +114,7 @@
               "uid": "P1809F7CD0C75ACF3"
             },
             "editorMode": "code",
-            "expr": "sum(observation_humidity)/count(observation_humidity)",
+            "expr": "sum(weather_humidity)/count(weather_humidity)",
             "legendFormat": "Percentage",
             "range": true,
             "refId": "A"
@@ -208,7 +208,7 @@
               "uid": "P1809F7CD0C75ACF3"
             },
             "editorMode": "code",
-            "expr": "sum(observation_rain_since_9am_mm)/count(observation_rain_since_9am_mm)",
+            "expr": "sum(weather_rain_since_9am_mm)/count(weather_rain_since_9am_mm)",
             "hide": false,
             "legendFormat": "mm rain since 9am",
             "range": true,
@@ -305,7 +305,7 @@
               "uid": "P1809F7CD0C75ACF3"
             },
             "editorMode": "code",
-            "expr": "sum(observation_temperature_celcius)/count(observation_temperature_celcius)",
+            "expr": "sum(weather_temperature_celcius)/count(weather_temperature_celcius)",
             "interval": "",
             "legendFormat": "Temperature",
             "range": true,
@@ -318,7 +318,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "sum(observation_temperature_feelslike_celcius)/count(observation_temperature_feelslike_celcius)",
+            "expr": "sum(weather_temperature_feelslike_celcius)/count(weather_temperature_feelslike_celcius)",
             "hide": false,
             "instant": false,
             "legendFormat": "Feels Like",
@@ -413,7 +413,7 @@
               "uid": "P1809F7CD0C75ACF3"
             },
             "editorMode": "code",
-            "expr": "sum(observation_windspeed_kph)/count(observation_windspeed_kph)",
+            "expr": "sum(weather_windspeed_kph)/count(weather_windspeed_kph)",
             "legendFormat": "Windspeed",
             "range": true,
             "refId": "A"
@@ -424,7 +424,7 @@
               "uid": "P1809F7CD0C75ACF3"
             },
             "editorMode": "code",
-            "expr": "sum(observation_windspeed_gust_kph)/count(observation_windspeed_gust_kph)",
+            "expr": "sum(weather_windspeed_gust_kph)/count(weather_windspeed_gust_kph)",
             "hide": false,
             "legendFormat": "Gusts",
             "range": true,

@@ -11,7 +11,7 @@
             "mode": "auto",
             "cwd": "${workspaceRoot}/src",
             "program": "${workspaceRoot}/src/cmd/exporter-weather/main.go",
-            "args": ["-location", "r3g54z4"]
+            "args": ["-lookup", "Newcastle"]
         }
     ]
 }

@@ -21,6 +21,7 @@ BUILD_DIR=${ROOT_DIR}/tmp
 # conduct a build & test
 clean ${BUILD_DIR}
 trivy fs ${TRIVY_OPTS} .
+docker build --target test .
 ${BUILDX} -o type=oci,dest=${BUILD_DIR}/image.tar .    
 (
     cd ${BUILD_DIR}

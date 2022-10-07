@@ -1,0 +1,41 @@
+{
+    "metadata": {
+      "response_timestamp": "2022-10-06T19:55:24Z",
+      "issue_time": "2022-10-06T19:51:02Z",
+      "observation_time": "2022-10-06T19:50:00Z",
+      "copyright": "This Application Programming Interface (API) is owned by the Bureau of Meteorology (Bureau). You must not use, copy or share it. Please contact us for more information on ways in which you can access our data. Follow this link http://www.bom.gov.au/inside/contacts.shtml to view our contact details."
+    },
+    "data": {
+      "temp": 11.1,
+      "temp_feels_like": 8.8,
+      "wind": {
+        "speed_kilometre": 13,
+        "speed_knot": 7,
+        "direction": "N"
+      },
+      "gust": {
+        "speed_kilometre": 15,
+        "speed_knot": 8
+      },
+      "max_gust": {
+        "speed_kilometre": 33,
+        "speed_knot": 18,
+        "time": "2022-10-06T14:23:00Z"
+      },
+      "max_temp": {
+        "time": "2022-10-06T19:20:00Z",
+        "value": 11.8
+      },
+      "min_temp": {
+        "time": "2022-10-06T19:50:00Z",
+        "value": 11.1
+      },
+      "rain_since_9am": 0.6,
+      "humidity": 96,
+      "station": {
+        "bom_id": "012345",
+        "name": "Sydney",
+        "distance": 8773
+      }
+    }
+  }

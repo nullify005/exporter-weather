@@ -1,0 +1,22 @@
+{
+    "metadata": {
+      "response_timestamp": "2022-10-07T01:51:09Z",
+      "copyright": "This Application Programming Interface (API) is owned by the Bureau of Meteorology (Bureau). You must not use, copy or share it. Please contact us for more information on ways in which you can access our data. Follow this link http://www.bom.gov.au/inside/contacts.shtml to view our contact details."
+    },
+    "data": [
+      {
+        "geohash": "gfedcba",
+        "id": "Melbourne-gfedcba",
+        "name": "Melbourne",
+        "postcode": "3000",
+        "state": "NSW"
+      },
+      {
+        "geohash": "abcdefg",
+        "id": "Sydney-abcdefg",
+        "name": "Sydney",
+        "postcode": "2000",
+        "state": "NSW"
+      }
+    ]
+  }

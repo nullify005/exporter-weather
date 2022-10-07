@@ -1,0 +1,13 @@
+{
+    "errors": [
+      {
+        "code": "WEATHER-400",
+        "title": "Invalid search query",
+        "status": "400",
+        "detail": "Invalid search query string."
+      }
+    ],
+    "metadata": {
+      "copyright": "This Application Programming Interface (API) is owned by the Bureau of Meteorology (Bureau). You must not use, copy or share it. Please contact us for more information on ways in which you can access our data. Follow this link http://www.bom.gov.au/inside/contacts.shtml to view our contact details."
+    }
+  }

@@ -14,16 +14,14 @@ securityContext:
   seccompProfile:
     type: RuntimeDefault
 service:
-  enabled: true
-  port: 80
-  targetPort: 2112
+  enabled: false
 ingress:
-  enabled: true
+  enabled: false
 resources:
   limits:
-    memory: 128Mi
+    memory: 32Mi
   requests:
-    memory: 128Mi 
+    memory: 32Mi 
 livenessProbe:
   path: /health
   port: 2112
