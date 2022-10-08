@@ -1,17 +1,12 @@
-FROM golang:1.19.1-alpine3.16 AS builder
+FROM golang:1.19.2-alpine3.16 AS builder
 RUN apk --no-cache add build-base
 ARG TARGETARCH
-WORKDIR /app
-COPY src/go.mod ./go.mod
-COPY src/go.sum ./go.sum
+WORKDIR /src
+COPY src/ ./
 RUN go mod download
-COPY src/cmd ./cmd
-COPY src/internal ./internal
-# RUN CGO_ENABLED=0 go build -v -ldflags="-s -w" -o /exporter-weather ./cmd/exporter-weather
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -a -ldflags="-s -w" -installsuffix cgo -v -o /exporter-weather ./cmd/exporter-weather
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -a -ldflags="-s -w" -installsuffix cgo -v -o /exporter-weather .
 
 FROM builder AS test
-# RUN go install honnef.co/go/tools/cmd/staticcheck@latest
 RUN go test -v ./...
 
 FROM scratch

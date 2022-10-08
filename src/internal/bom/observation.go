@@ -119,6 +119,9 @@ func Observe(location string) (data Observation, err error) {
 }
 
 func WindBearing(direction string) float64 {
+	if _, ok := bearing[direction]; !ok {
+		return -1
+	}
 	return bearing[direction]
 }
 
