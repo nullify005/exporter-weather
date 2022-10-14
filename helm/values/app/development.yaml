@@ -1,9 +1,9 @@
 image:
-  tag: development
+  tag: development@sha256:1901cd62c3dde616a041e2a8f0634244c007d9e085e6853cbbeb5973a78fe025
 args:
-- -location
+- watch
 - r3fup88
-- -interval
-- 120
-- -listen
-- 0.0.0.0:2112
+- --interval
+- 2m
+- --listen
+- :2112
