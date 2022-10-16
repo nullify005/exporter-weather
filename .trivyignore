@@ -1,2 +1,4 @@
 # ignore the :latest tag
 KSV013
+# ignore USER since we're in a scratch image & at runtime the pod runs as non-root
+DS002

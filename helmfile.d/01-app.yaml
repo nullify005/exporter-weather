@@ -15,7 +15,7 @@ releases:
   chart: ../helm/charts/exporter-weather
   values:
   - ../helm/values/app/common.yaml
-  - ../helm/values/app/{{ .Environment.Name }}.yaml\
+  - ../helm/values/app/{{ .Environment.Name }}.yaml
   {{ if eq .Environment.Name "development" }}
   - ../secrets/version.yaml
   {{ end }}
