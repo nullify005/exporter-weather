@@ -1,5 +1,5 @@
 image:
-  repository: nullify005/exporter-weather
+  repository: ghcr.io/nullify005/exporter-weather
 serviceAccount:
   create: false
 securityContext:
