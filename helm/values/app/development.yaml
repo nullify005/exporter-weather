@@ -1,5 +1,3 @@
-image:
-  tag: development@sha256:1901cd62c3dde616a041e2a8f0634244c007d9e085e6853cbbeb5973a78fe025
 args:
 - watch
 - r3fup88
